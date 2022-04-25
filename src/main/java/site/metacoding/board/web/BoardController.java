@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.RequiredArgsConstructor;
+import site.metacoding.board.domain.Board;
 import site.metacoding.board.domain.BoardRepository;
 
 @RequiredArgsConstructor
@@ -35,4 +36,10 @@ public class BoardController {
         return "boardUpdateForm";
     }
 
+    @PostMapping("/board")
+    public String boardWrite(Board board) { // title, content, nickname 받기
+        boardRepository.save(board);
+        return "redirect:/";
+
+    }
 }
