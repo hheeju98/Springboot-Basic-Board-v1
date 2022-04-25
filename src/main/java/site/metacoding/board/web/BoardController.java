@@ -3,6 +3,7 @@ package site.metacoding.board.web;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.RequiredArgsConstructor;
 import site.metacoding.board.domain.BoardRepository;
@@ -12,6 +13,12 @@ import site.metacoding.board.domain.BoardRepository;
 public class BoardController {
 
     private final BoardRepository boardRepository;
+
+    @GetMapping("/test/insertOne")
+    public @ResponseBody String testInsertOne() {
+        boardRepository.insertOne();
+        return "insertOne 잘됐어";
+    }
 
     @GetMapping({ "/", "/board" })
     public String boardList() {
